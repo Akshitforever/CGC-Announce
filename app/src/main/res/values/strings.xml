@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CGCRadio</string>
+    <string name="record">Record</string>
+    <string name="stoprecord">StopRecord</string>
+</resources>

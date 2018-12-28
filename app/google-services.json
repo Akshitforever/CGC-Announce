@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "134759063991",
+    "firebase_url": "https://cgcradio-bbd8d.firebaseio.com",
+    "project_id": "cgcradio-bbd8d",
+    "storage_bucket": "cgcradio-bbd8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134759063991:android:a41771bf0ad48364",
+        "android_client_info": {
+          "package_name": "com.example.akshi.cgcradio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134759063991-h9cj0r4t1tu2iickfo9356bdn9pbd8p1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.akshi.cgcradio",
+            "certificate_hash": "3de1bb2475be3c1be8498a019bc3b5ac7d46b74f"
+          }
+        },
+        {
+          "client_id": "134759063991-vqst9reifvltavd403j24kcpl7uvf2du.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB83O1U1cSXebzTyHsVKEP-TfH9FhmbmA0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134759063991-vqst9reifvltavd403j24kcpl7uvf2du.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

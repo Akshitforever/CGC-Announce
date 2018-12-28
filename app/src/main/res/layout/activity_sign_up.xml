@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffff"
+    tools:context=".SignUp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:cardBackgroundColor="#0079d6">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"/>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        app:cardBackgroundColor="#ffff"
+        app:cardElevation="4dp"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/sign_up_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="20sp"
+                android:text="Sign Up"
+                android:textColor="#099a00"
+                android:textSize="35sp"
+                tools:text="Sign Up" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/sign_up_text"
+                android:id="@+id/emailLayout">
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+
+                    android:elevation="4dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#f000"
+                    android:textColorHint="#099a00"
+                    android:textSize="16sp"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/passwordLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/emailLayout"
+                android:layout_marginTop="30dp">
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="270dp"
+                    android:layout_height="41dp"
+
+                    android:elevation="4dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="#f333"
+                    android:textColor="#f000"
+                    android:textSize="16sp"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/passwordLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:id="@+id/cpasswordLayout">
+                <EditText
+                    android:id="@+id/cpassword"
+                    android:layout_width="270dp"
+                    android:layout_height="41dp"
+                    android:elevation="4dp"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="#f333"
+                    android:textColor="#f222"
+                    android:textSize="16sp"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <Button
+                android:id="@+id/sign_up_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cpasswordLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="#0079d6"
+                android:gravity="center"
+                android:text="Sign Up"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
+            <Button
+                android:id="@+id/sign_in_button"
+                android:background="#0fff"
+                android:layout_width="170dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/sign_up_button"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have an Account? Sign In"
+
+                android:textColor="#007986"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:elevation="5dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="visible"
+        android:theme="@style/AppTheme_WhiteAccent"/>
+</RelativeLayout>
