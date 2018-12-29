@@ -98,7 +98,6 @@ public class Login extends AppCompatActivity {
                             }).show();
                 }
                 else {
-//                    startActivity(new Intent(Login.this,Semester.class));
                     final String email = inputEmail.getText().toString();
                     final String password = inputPassword.getText().toString();
 
@@ -135,7 +134,9 @@ public class Login extends AppCompatActivity {
                                         Toast.makeText(Login.this, " Authentication failed, check your email and password or sign up", Toast.LENGTH_LONG).show();
                                     } else {
                                         if (checkIfEmailVerified()) {
+                                            progressBar.setVisibility(View.INVISIBLE);
                                             startActivity(new Intent(Login.this,Events.class));
+                                            finish();
 
                                         } else {
                                             inputPassword.setText("");
