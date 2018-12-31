@@ -21,6 +21,7 @@
         >
 
         <ImageView
+            android:id="@+id/eventPoster"
             app:layout_collapseMode="parallax"
             android:src="@drawable/firework"
             android:contentDescription="@string/app_name"

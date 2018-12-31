@@ -1,32 +1,27 @@
 package com.example.akshi.cgcradio;
+
 import android.content.Context;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.akshi.cgcradio.R;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>
-{
+public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.ViewHolder> {
 
     private ArrayList<String> mImageName;
-    private ArrayList<String> images;
+    private ArrayList<Integer> images;
     private Context mContext;
 
-    RecyclerAdapter(Context mContext, ArrayList<String> mImageName, ArrayList<String> images) {
+    AnnouncementAdapter(Context mContext, ArrayList<String> mImageName, ArrayList<Integer> images) {
         this.mImageName = mImageName;
         this.images = images;
         this.mContext = mContext;
@@ -35,14 +30,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AnnouncementAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_list_item,parent,false);
-        return new ViewHolder(view);
+        return new AnnouncementAdapter.ViewHolder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final AnnouncementAdapter.ViewHolder holder, int position) {
 
         Glide.with(mContext).asBitmap().load(images.get(position)).into(holder.imageView);
         holder.imageName.setText(mImageName.get(position));

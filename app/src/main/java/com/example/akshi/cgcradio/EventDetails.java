@@ -5,9 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +20,7 @@ public class EventDetails extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     TextView event,org,venue,desc;
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +29,6 @@ public class EventDetails extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Intent i =getIntent();
         Toast.makeText(this,"Retrieving...",Toast.LENGTH_LONG).show();
-        Toast.makeText(this,i.getStringExtra("Event"),Toast.LENGTH_LONG).show();
         if(getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseReference = FirebaseDatabase.getInstance().getReference("events/"+i.getStringExtra("Event"));
@@ -34,11 +36,13 @@ public class EventDetails extends AppCompatActivity {
         org = findViewById(R.id.organizer);
         desc = findViewById(R.id.desc);
         venue = findViewById(R.id.venue);
+        imageView = findViewById(R.id.eventPoster);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 EventDetailsBean ev = dataSnapshot.getValue(EventDetailsBean.class);
                 if (ev != null) {
+                    Glide.with(EventDetails.this).asBitmap().load(ev.getUrl()).into(imageView);
                     event.setText(ev.getEvent());
                     String organizerString = "Organizer: "+ev.getOrg();
                     org.setText(organizerString);

@@ -34,7 +34,7 @@ public class Events extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     RecyclerView list;
     ArrayList<String> names=new ArrayList<>();
-    ArrayList<Integer> images=new ArrayList<>();
+    ArrayList<String> images=new ArrayList<>();
     ArrayList<String> keys = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,6 @@ public class Events extends AppCompatActivity {
         setContentView(R.layout.activity_events);
         list= findViewById(R.id.recycler_semester_contents);
         list.setHasFixedSize(true);
-
         mDrawerLayout = findViewById(R.id.drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,9 +53,11 @@ public class Events extends AppCompatActivity {
             Toast.makeText(this,"Can't retrieve your id. Please Logout.",Toast.LENGTH_LONG).show();
         }
         Toast.makeText(this,username,Toast.LENGTH_LONG).show();
-        if(username.equals("akshitbansal2828@gmail.com")){
+        if(username.equals("akshitbansal2828@gmail.com")) {
             add.setVisibility(View.VISIBLE);
+            navigationView.inflateMenu(R.menu.drawer_view);
         }
+        else navigationView.inflateMenu(R.menu.student_menu);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,48 +76,51 @@ public class Events extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(final DataSnapshot ds:dataSnapshot.getChildren()) {
-                    EventDetailsBean ev = ds.getValue(EventDetailsBean.class);
+                names = new ArrayList<>();
+                images = new ArrayList<>();
+                keys = new ArrayList<>();
+                for(DataSnapshot ds:dataSnapshot.getChildren()) {
+                    EventDetailsBean ev = (ds.getValue(EventDetailsBean.class));
                     names.add(ev.getEvent());
-                    images.add(R.drawable.firework);
+                    images.add(ev.getUrl());
                     keys.add(ds.getKey());
                 }
-                    RecyclerAdapter recyclerAdapter=new RecyclerAdapter(Events.this,names,images){
-                        @Override
-                        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-                            super.onBindViewHolder(holder, position);
+                RecyclerAdapter recyclerAdapter=new RecyclerAdapter(Events.this,names,images){
+                    @Override
+                    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+                        super.onBindViewHolder(holder, position);
                             final String pos = keys.get(position);
-                            holder.layout.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    if (isNetworkAvailable()) {
-                                        Intent i =new Intent(Events.this,EventDetails.class);
+                        holder.layout.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (isNetworkAvailable()) {
+                                    Intent i =new Intent(Events.this,EventDetails.class);
                                         i.putExtra("Event",pos);
-                                        startActivity(i);
-                                    } else {
-                                        final Snackbar snackbar = Snackbar.make(v, "No Internet Connection", Snackbar.LENGTH_LONG);
-                                        snackbar.setAction("Dismiss",
-                                                new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View view) {
-                                                        snackbar.dismiss();
-                                                    }
-                                                }).show();
-                                    }
+                                    startActivity(i);
+                                } else {
+                                    final Snackbar snackbar = Snackbar.make(v, "No Internet Connection", Snackbar.LENGTH_LONG);
+                                    snackbar.setAction("Dismiss",
+                                            new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    snackbar.dismiss();
+                                                }
+                                            }).show();
                                 }
-                            });
-                        }
-                    };
+                            }
+                        });
+                    }
+                };
 
-                    list.setLayoutManager(new LinearLayoutManager(Events.this));
-                    list.setAdapter(recyclerAdapter);
-            }
-
+                list.setLayoutManager(new LinearLayoutManager(Events.this));
+                list.setAdapter(recyclerAdapter);
+                }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -140,6 +144,16 @@ public class Events extends AppCompatActivity {
                             finish();
                             break;
                         }
+                    }
+                    case R.id.makeAnnouncement:
+                    {
+                        startActivity(new Intent(Events.this,ShareIt.class));
+                        finish();
+                        break;
+                    }
+                    case R.id.seeAnnouncement:{
+                        startActivity(new Intent(Events.this,SeeAnnouncements.class));
+
                     }
                 }
                 mDrawerLayout.closeDrawer(Gravity.START,true);
