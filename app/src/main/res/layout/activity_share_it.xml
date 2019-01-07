@@ -4,56 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShareIt">
-
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="92dp"
-        android:src="@drawable/ic_music_24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".ShareIt"
+    android:background="@drawable/gradient">
 
     <TextView
         android:id="@+id/contentType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="100dp"
-        android:text="Type:"
-        android:textColor="#000"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+        android:layout_marginTop="72dp"
+        android:text="Welcome to Announcements!"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="38sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/contentName"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="136dp"
-        android:text="Name:"
-        android:textColor="#000"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/circleImageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/browse"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="236dp"
-        android:background="#0079d6"
-        android:padding="15dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="28dp"
+        android:text="No File Selected"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentType" />
+    <Button
+        android:id="@+id/browse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#2d77c1"
         android:text="Browse"
         android:textColor="#fff"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/contentType"
+        app:layout_constraintVertical_bias="0.152" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,7 +58,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
         android:text="Description"
-        android:textColor="#000"
+        android:textColor="#fff"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/uploadDesc"
@@ -72,29 +69,29 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginStart="18dp"
+        android:layout_marginTop="404dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginBottom="28dp"
         android:background="@drawable/borders"
+
         android:gravity="top"
         android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/upload"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/upload"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="92dp"
-        android:background="#0079d6"
-        android:padding="15dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="28dp"
+        android:background="#2d77c1"
         android:text="Upload"
         android:textColor="#fff"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadDesc" />
 </android.support.constraint.ConstraintLayout>

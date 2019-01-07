@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    android:background="#ffff"
+    android:background="@drawable/gradient"
     tools:context=".Events"
     >
     <LinearLayout
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="Notification"
             android:textAlignment="center"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="36sp" />
 
         <android.support.v7.widget.RecyclerView
@@ -40,7 +40,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="#0079d6"
+            android:background="#192366"
             app:titleTextColor="#fff"
             android:theme="@style/AppTheme"
             app:title="On Time"
@@ -56,7 +56,7 @@
                     android:text="Add"
                     android:textColor="#ffffff"
                     android:padding="5px"
-                    android:background="#0079d6"
+                    android:background="@android:color/transparent"
                     android:layout_gravity="right"
                     />
         </android.support.v7.widget.Toolbar>
@@ -71,5 +71,6 @@
         android:fitsSystemWindows="true"
         android:background="#fff"
         app:itemTextColor="#000"
+        app:menu="@menu/student_menu"
         />
 </android.support.v4.widget.DrawerLayout>

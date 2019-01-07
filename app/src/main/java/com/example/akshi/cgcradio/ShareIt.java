@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -42,10 +43,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ShareIt extends AppCompatActivity {
 
 
-    TextView type,name;
+    TextView name;
     EditText desc;
     Button upload,browse;
-    CircleImageView image;
     DatabaseReference databaseReference;
     StorageReference reference;
     private static final int FILE_SELECT_CODE = 0;
@@ -56,7 +56,6 @@ public class ShareIt extends AppCompatActivity {
         setContentView(R.layout.activity_share_it);
         initialize();
     }
-
     private void handleSendImage(Intent intent,String typeOfFile) throws IOException {
         imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if(imageUri!=null){
@@ -66,21 +65,17 @@ public class ShareIt extends AppCompatActivity {
                 int cut = p.lastIndexOf('/');
                 if(cut!=-1) nameOfFile = p.substring(cut);
             }
-            type.setText("Type: "+typeOfFile);
             name.setText("Name: "+nameOfFile);
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-            image.setImageBitmap(bitmap);
+
         }
     }
 
     void initialize(){
-        type = findViewById(R.id.contentType);
-        name = findViewById(R.id.contentName);
+        name = findViewById(R.id.name);
         desc = findViewById(R.id.uploadDesc);
         upload = findViewById(R.id.upload);
-        image = findViewById(R.id.circleImageView);
         browse = findViewById(R.id.browse);
-        
+
         databaseReference = FirebaseDatabase.getInstance().getReference("announcements");
         reference = FirebaseStorage.getInstance().getReference("announcements");
         
@@ -104,12 +99,9 @@ public class ShareIt extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//              uploadImage();
                 uploadAudio();
             }
         });
-        
-        Toast.makeText(this,type,Toast.LENGTH_LONG).show();
 
         if (intent!=null && Intent.ACTION_SEND.equals(action) && type != null) {
             if (type.startsWith("audio/")) {
@@ -181,8 +173,13 @@ public class ShareIt extends AppCompatActivity {
                         }
                     });
                     Toast.makeText(ShareIt.this,"Uploaded",Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(ShareIt.this,Events.class));
-                    finish();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(new Intent(ShareIt.this,SeeAnnouncements.class));
+                            finish();
+                        }
+                    },2000);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -216,16 +213,12 @@ public class ShareIt extends AppCompatActivity {
                     }
                 }
                 if (resultCode == RESULT_OK) {
-                    imageUri = null;
                     if (data != null) {
                         audioUri = data.getData();
-//                        imageUri = data.getData();
+                        if (audioUri != null) {
+                            name.setText(audioUri.getPath());
+                        }
                     }
-//                    try {
-//                        image.setImageBitmap(MediaStore.Images.Media.getBitmap (this.getContentResolver(),imageUri));
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
                 }
         }
 

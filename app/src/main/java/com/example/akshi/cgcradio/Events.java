@@ -47,17 +47,17 @@ public class Events extends AppCompatActivity {
         setSupportActionBar(toolbar);
         NavigationView navigationView = findViewById(R.id.nav_view);
         Button add = findViewById(R.id.add);
-        String username = "";
-        try{username = FirebaseAuth.getInstance().getCurrentUser().getEmail();}
+        String username = " ";
+        Toast.makeText(this,"Retrieving..",Toast.LENGTH_LONG).show();
+        try { username = FirebaseAuth.getInstance().getCurrentUser().getEmail(); }
         catch(NullPointerException npe){
-            Toast.makeText(this,"Can't retrieve your id. Please Logout.",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Can't retrieve your id. Please Relogin.",Toast.LENGTH_LONG).show();
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(Events.this,Login.class));
+            finish();
         }
-        Toast.makeText(this,username,Toast.LENGTH_LONG).show();
-        if(username.equals("akshitbansal2828@gmail.com")) {
+        if(username!=null && username.equals("akshitbansal2828@gmail.com"))
             add.setVisibility(View.VISIBLE);
-            navigationView.inflateMenu(R.menu.drawer_view);
-        }
-        else navigationView.inflateMenu(R.menu.student_menu);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,15 +145,8 @@ public class Events extends AppCompatActivity {
                             break;
                         }
                     }
-                    case R.id.makeAnnouncement:
-                    {
-                        startActivity(new Intent(Events.this,ShareIt.class));
-                        finish();
-                        break;
-                    }
                     case R.id.seeAnnouncement:{
                         startActivity(new Intent(Events.this,SeeAnnouncements.class));
-
                     }
                 }
                 mDrawerLayout.closeDrawer(Gravity.START,true);
@@ -163,7 +156,6 @@ public class Events extends AppCompatActivity {
         });
     }
     private boolean isNetworkAvailable() {
-        // Using ConnectivityManager to check for Network Connection
         ConnectivityManager connectivityManager = (ConnectivityManager) this
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = null;
@@ -173,10 +165,7 @@ public class Events extends AppCompatActivity {
         }
         return activeNetworkInfo != null;
     }
-    public boolean checkNet()
-    {
-        return !isNetworkAvailable();
-    }
+    public boolean checkNet() { return !isNetworkAvailable(); }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

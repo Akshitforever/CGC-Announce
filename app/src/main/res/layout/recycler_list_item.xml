@@ -36,5 +36,6 @@
                 android:layout_marginLeft="30dp"
                 android:textSize="20sp"/>
         </RelativeLayout>
+
     </android.support.v7.widget.CardView>
 </RelativeLayout>

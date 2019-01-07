@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -54,13 +55,13 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
         CircleImageView imageView;
         TextView imageName;
+
         RelativeLayout layout;
         ViewHolder(View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.image);
             imageName=itemView.findViewById(R.id.image_name);
             layout=itemView.findViewById(R.id.parent_layout);
-
         }
     }
 
