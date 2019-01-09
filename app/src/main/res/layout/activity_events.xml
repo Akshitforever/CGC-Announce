@@ -43,22 +43,20 @@
             android:background="#192366"
             app:titleTextColor="#fff"
             android:theme="@style/AppTheme"
-            app:title="On Time"
-
+            app:title="CGC Radio"
             app:titleMarginStart="15dp"
-
             >
-                <Button
-                    android:id="@+id/add"
-                    android:visibility="gone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add"
-                    android:textColor="#ffffff"
-                    android:padding="5px"
-                    android:background="@android:color/transparent"
-                    android:layout_gravity="right"
-                    />
+            <Button
+                android:id="@+id/add"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:textColor="#ffffff"
+                android:padding="5px"
+                android:background="@android:color/transparent"
+                android:layout_gravity="right"
+                />
         </android.support.v7.widget.Toolbar>
     </FrameLayout>
 

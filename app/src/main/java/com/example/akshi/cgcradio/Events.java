@@ -147,7 +147,11 @@ public class Events extends AppCompatActivity {
                     }
                     case R.id.seeAnnouncement:{
                         startActivity(new Intent(Events.this,SeeAnnouncements.class));
+                        break;
                     }
+                    case R.id.gallery:
+                        startActivity(new Intent(Events.this,GalleryList.class));
+
                 }
                 mDrawerLayout.closeDrawer(Gravity.START,true);
                 return true;

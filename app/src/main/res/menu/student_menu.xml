@@ -4,6 +4,10 @@
         android:title="Profile"
         android:icon="@drawable/profile"/>
     <item
+        android:id="@+id/gallery"
+        android:title="Gallery"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"/>
+    <item
         android:id="@+id/seeAnnouncement"
         android:title="See Announcement"
         android:icon="@drawable/ic_power_settings_new_black_24dp"/>

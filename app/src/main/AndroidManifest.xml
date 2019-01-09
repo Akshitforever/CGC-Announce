@@ -39,7 +39,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SeeAnnouncements" />
-        <activity android:name=".Music"></activity>
+        <activity android:name=".Music" />
+        <activity android:name=".GalleryList" />
+        <activity android:name=".PickPhotos"/>
     </application>
 
 </manifest>
